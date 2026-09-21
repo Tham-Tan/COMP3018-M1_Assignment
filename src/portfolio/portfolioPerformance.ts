@@ -18,8 +18,14 @@ export function calculatePortfolioPerformance(
         performanceSummary = `Excellent performance! Your investments are doing great.`;
     } else if (percentageChange >= 10) {
         performanceSummary = `Solid gain. Keep monitoring your investments.`;
+    } else if (percentageChange > 0){
+        performanceSummary = `Modest gain. Your portfolio is growing slowly.`;
+    } else if (percentageChange == 0){
+        performanceSummary = `No change. Your portfolio is holding steady.`;
+    } else if (percentageChange >= -10){
+        performanceSummary = `Minor loss. Stay calm and review your options.`;
     } else {
-        performanceSummary = `The portfolio has performed poorly with a loss of $${Math.abs(profitOrLoss)}.`;
+        performanceSummary = `Significant loss. Review your portfolio strategy.`
     }
 
     return {

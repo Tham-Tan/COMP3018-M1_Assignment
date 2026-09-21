@@ -1,0 +1,7 @@
+$kind: http-request
+url: http://localhost:3000/api/v1/portfolio/performance?initialInvestment=10000&currentValue=9000
+method: GET
+queryParams:
+  initialInvestment: "10000"
+  currentValue: "9000"
+order: 4503552606488631
