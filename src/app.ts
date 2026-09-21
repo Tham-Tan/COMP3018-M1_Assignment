@@ -1,23 +1,22 @@
-import express, { Application, Request, Response } from 'express';
-import healthRoutes from './api/v1/routes/healthRoutes';
+// import the express application and type definition
+import express, { Express } from "express";
 
-// 1. Initialize the Express application
-const app: Application = express();
+// initialize the express application
+const app: Express = express();
 
-// 2. Add middleware to parse JSON bodies
-app.use(express.json());
-
-// 3. Basic root/testing routes
-app.get('/', (req: Request, res: Response) => {
-  res.send('API is running...');
+// respond to GET request at endpoint "/" with message
+app.get("/", (req, res) => {
+    res.send("Hello, world!");
 });
 
-app.get('/ping', (req: Request, res: Response) => {
-  res.json({ message: 'pong' });
+app.get("/api/v1/health", (req, res) => {
+    res.json({
+        status: "OK",
+        uptime: process.uptime(),
+        timestamp: new Date().toISOString(),
+        version: "1.0.0",
+    });
 });
 
-// 4. Mount API v1 router (includes /api/v1/health)
-app.use('/api/v1', healthRoutes);
-
-// 5. Export app for server.ts and Jest tests
+// export app and server for testing
 export default app;
