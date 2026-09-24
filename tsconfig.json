@@ -15,10 +15,11 @@
         "noUnusedLocals": true,
         "alwaysStrict": true,
         "baseUrl": "./",
+        "types": ["jest", "node"],
         "paths": {
-            "*": ["*"]
+            "@/*": ["src/*"]
         }
     },
     "include": ["src/**/*", "test/**/*", "config/**/*"],
-    "exclude": ["node_modules", "dist"]
+    "exclude": ["node_modules", "dist"] // 💡 REMOVED "src/test" from here
 }
